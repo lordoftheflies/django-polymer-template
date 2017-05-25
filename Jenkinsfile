@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'python:2.7.12' }
+    agent { any }
     stages {
       
             stage("Install Python Virtual Enviroment") {
