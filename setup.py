@@ -47,14 +47,5 @@ setup(
         "django",
         "django-material",
         'uwsgi'
-    ],
-    tests_require=[
-    ],
-    # test_suite="assetadapter.tests",
-    # entry_points={
-    #     'console_scripts': [
-    #         'hedgehog-sc-scheduler = orchestrator.celery:main',
-    #         'hedgehog-sc-orchestrator = assetadapter.main:main',
-    #     ]
-    # }
+    ]
 )
