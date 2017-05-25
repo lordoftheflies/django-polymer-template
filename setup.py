@@ -1,6 +1,5 @@
 import os
 from setuptools import find_packages, setup
-from setuptools import setup, find_packages
 from distutils.util import convert_path
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
@@ -44,14 +43,14 @@ setup(
         'Development Status :: 2 - Pre-Alpha'
     ],
     install_requires=[
-        "django",
-        "dj-database-url",
-        "django-material",
-        "uwsgi",
-        "django-configurations",
-        "django-debug-toolbar",
-        "django-dotenv",
-        "django-extensions",
+        'django',
+        'dj-database-url',
+        'django-material',
+        'uwsgi',
+        'django-configurations',
+        'django-debug-toolbar',
+        'django-dotenv',
+        'django-extensions',
 
     ],
     # tests_require=[
