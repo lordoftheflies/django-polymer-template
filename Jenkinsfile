@@ -6,7 +6,9 @@ pipeline {
 
         if (!installed) {
             stage("Install Python Virtual Enviroment") {
-                sh 'virtualenv --no-site-packages .'
+                steps {
+                    sh 'virtualenv --no-site-packages .'
+                }
             }
         }  
 
