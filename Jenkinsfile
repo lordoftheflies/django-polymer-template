@@ -5,6 +5,7 @@ pipeline {
             stage ("Install Python Virtual Enviroment") {
                 steps {
                     sh 'virtualenv --no-site-packages -p /usr/bin/python2.7 env'
+		    sh 'cp env.template .env'
                 }
             }   
 
