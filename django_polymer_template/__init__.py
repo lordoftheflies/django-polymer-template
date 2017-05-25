@@ -1,0 +1,1 @@
+from django_polymer_template.version import __version__

@@ -7,7 +7,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
 
 main_ns = {}
-ver_path = convert_path('django-polymer-template/version.py')
+ver_path = convert_path('django_polymer_template/version.py')
 with open(ver_path) as ver_file:
     exec (ver_file.read(), main_ns)
 
