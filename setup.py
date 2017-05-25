@@ -48,7 +48,7 @@ setup(
         "dj-database-url",
         "django-material",
         "uwsgi",
-	"django-configurations"
+	"django-configurations",
         "django-debug-toolbar",
         "django-dotenv",
         "django-extensions",
