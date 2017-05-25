@@ -18,6 +18,8 @@ pipeline {
               steps {
                 sh '''
                     . ./env/bin/activate
+                    pwd
+                    ls -la
                     python setup.py sdist develop
                     deactivate
                    '''
