@@ -4,7 +4,7 @@ pipeline {
       
             stage ("Install Python Virtual Enviroment") {
                 steps {
-                    sh 'virtualenv --no-site-packages .'
+                    sh 'virtualenv --no-site-packages -p /usr/bin/python3.5 env3'
                 }
             }   
 
@@ -17,7 +17,7 @@ pipeline {
             stage ("Install Application Dependencies") {
               steps {
                 sh '''
-                    source bin/activate
+                    source ./env/bin/activate
                     python setup.py sdist develop
                     deactivate
                    '''
@@ -27,7 +27,7 @@ pipeline {
             stage ("Collect Static files") {
                 steps {
                   sh '''
-                    source bin/activate
+                    source ./env/bin/activate
                     python manage.py collectstatic --noinput
                     deactivate
                    '''
@@ -38,7 +38,7 @@ pipeline {
             stage ("Run Unit/Integration Tests") {
                steps {
                   sh '''
-                        source ../bin/activate
+                        source ./env/bin/activate
                         python manage.py jenkins
                         deactivate
                      '''
