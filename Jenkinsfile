@@ -57,5 +57,15 @@ pipeline {
                      '''
                }
             }
+
+            stage ("Distribute package") {
+               steps {
+                  sh '''
+                        . ./env/bin/activate
+                        python setup.py sdist upload -v -r local
+                        deactivate
+                     '''
+               }
+            }
     }
 }
