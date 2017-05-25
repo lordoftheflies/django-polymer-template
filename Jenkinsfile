@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
       
-            stage("Install Python Virtual Enviroment") {
+            stage ("Install Python Virtual Enviroment") {
                 steps {
                     sh 'virtualenv --no-site-packages .'
                 }
