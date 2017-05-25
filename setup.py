@@ -54,7 +54,7 @@ setup(
         "django-extensions",
 
     ],
-    tests_require=[
-        "Werkzeug"
-    ]
+    # tests_require=[
+    #     "Werkzeug"
+    # ]
 )
