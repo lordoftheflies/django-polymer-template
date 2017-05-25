@@ -51,7 +51,7 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
 
-    ROOT_URLCONF = 'nomono.urls'
+    ROOT_URLCONF = 'django_polymer_template.urls'
 
     TEMPLATES = [
         {
@@ -69,7 +69,7 @@ class Common(Configuration):
         },
     ]
 
-    WSGI_APPLICATION = 'nomono.wsgi.application'
+    WSGI_APPLICATION = 'django_polymer_template.wsgi.application'
 
     # Database
     # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
