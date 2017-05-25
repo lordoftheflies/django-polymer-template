@@ -1,52 +1,64 @@
-node {
-  def installed = fileExists 'bin/activate'
+pipeline {
+    agent { docker 'python:2.7.12' }
+    stages {
+      
+        def installed = fileExists 'bin/activate'
 
-  if (!installed) {
-      stage("Install Python Virtual Enviroment") {
-          sh 'virtualenv --no-site-packages .'
-      }
-  }  
+        if (!installed) {
+            stage("Install Python Virtual Enviroment") {
+                sh 'virtualenv --no-site-packages .'
+            }
+        }  
 
-  stage ("Get Latest Code") {
-      checkout scm
-  }
+        stage ("Get Latest Code") {
+            steps {
+              checkout scm
+            }
+        }
 
-  stage ("Install Application Dependencies") {
-      sh '''
-          source bin/activate
-          python setup.py sdist develop
-          deactivate
-         '''
-  }
-
-  stage ("Collect Static files") {
-      sh '''
-          source bin/activate
-          python manage.py collectstatic --noinput
-          deactivate
-         '''
-  }
-
-
-  stage ("Run Unit/Integration Tests") {
-      def testsError = null
-      try {
-          sh '''
-              source ../bin/activate
-              python manage.py jenkins
-              deactivate
-             '''
-      }
-      catch(err) {
-          testsError = err
-          currentBuild.result = 'FAILURE'
-      }
-      finally {
-          junit 'reports/junit.xml'
-
-          if (testsError) {
-              throw testsError
+        stage ("Install Application Dependencies") {
+          steps {
+            sh '''
+                source bin/activate
+                python setup.py sdist develop
+                deactivate
+               '''
           }
-      }
-  }
+        }
+
+        stage ("Collect Static files") {
+            steps {
+              sh '''
+                source bin/activate
+                python manage.py collectstatic --noinput
+                deactivate
+               '''
+            }
+        }
+
+
+        stage ("Run Unit/Integration Tests") {
+           steps {
+              def testsError = null
+              try {
+                  sh '''
+                      source ../bin/activate
+                      python manage.py jenkins
+                      deactivate
+                     '''
+              }
+              catch(err) {
+                  testsError = err
+                  currentBuild.result = 'FAILURE'
+              }
+              finally {
+                  junit 'reports/junit.xml'
+
+                  if (testsError) {
+                      throw testsError
+                  }
+              }
+           }
+        }
+    }
 }
