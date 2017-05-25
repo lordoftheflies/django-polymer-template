@@ -37,25 +37,11 @@ pipeline {
 
             stage ("Run Unit/Integration Tests") {
                steps {
-                  def testsError = null
-                  try {
-                      sh '''
-                          source ../bin/activate
-                          python manage.py jenkins
-                          deactivate
-                         '''
-                  }
-                  catch(err) {
-                      testsError = err
-                      currentBuild.result = 'FAILURE'
-                  }
-                  finally {
-                      junit 'reports/junit.xml'
-
-                      if (testsError) {
-                          throw testsError
-                      }
-                  }
+                  sh '''
+                        source ../bin/activate
+                        python manage.py jenkins
+                        deactivate
+                     '''
                }
             }
     }
