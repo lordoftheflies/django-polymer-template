@@ -4,7 +4,7 @@ pipeline {
       
             stage ("Install Python Virtual Enviroment") {
                 steps {
-                    sh 'virtualenv --no-site-packages -p /usr/bin/python3.5 env3'
+                    sh 'virtualenv --no-site-packages -p /usr/bin/python2.7 env'
                 }
             }   
 
