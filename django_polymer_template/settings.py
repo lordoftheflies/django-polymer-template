@@ -38,9 +38,7 @@ class Common(Configuration):
         'django.contrib.staticfiles',
 
         'django_extensions',
-        'debug_toolbar',
-
-        'mdm.apps.MdmConfig'
+        'debug_toolbar'
     ]
 
     MIDDLEWARE = [
