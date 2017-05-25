@@ -17,7 +17,7 @@ pipeline {
             stage ("Install Application Dependencies") {
               steps {
                 sh '''
-                    source ./env/bin/activate
+                    . ./env/bin/activate
                     python setup.py sdist develop
                     deactivate
                    '''
@@ -27,7 +27,7 @@ pipeline {
             stage ("Collect Static files") {
                 steps {
                   sh '''
-                    source ./env/bin/activate
+                    . ./env/bin/activate
                     python manage.py collectstatic --noinput
                     deactivate
                    '''
@@ -38,7 +38,7 @@ pipeline {
             stage ("Run Unit/Integration Tests") {
                steps {
                   sh '''
-                        source ./env/bin/activate
+                        . ./env/bin/activate
                         python manage.py jenkins
                         deactivate
                      '''
