@@ -42,7 +42,17 @@ pipeline {
                steps {
                   sh '''
                         . ./env/bin/activate
-                        python manage.py jenkins
+                        python manage.py test
+                        deactivate
+                     '''
+               }
+            }
+
+            stage ("Distribute package") {
+               steps {
+                  sh '''
+                        . ./env/bin/activate
+                        python setup.py sdist upload -v -r local
                         deactivate
                      '''
                }
