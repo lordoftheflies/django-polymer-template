@@ -45,7 +45,14 @@ setup(
     ],
     install_requires=[
         "django",
+        "dj-database-url",
         "django-material",
-        'uwsgi'
+        "uwsgi",
+	"django-configurations"
+        "django-debug-toolbar",
+        "django-dotenv",
+        "django-extensions",
+        
+        "Werkzeug"
     ]
 )
