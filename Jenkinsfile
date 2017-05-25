@@ -14,7 +14,7 @@ node {
   stage ("Install Application Dependencies") {
       sh '''
           source bin/activate
-          pip install -r <relative path to requirements file>
+          python setup.py sdist develop
           deactivate
          '''
   }
@@ -22,7 +22,7 @@ node {
   stage ("Collect Static files") {
       sh '''
           source bin/activate
-          python <relative path to manage.py> collectstatic --noinput
+          python manage.py collectstatic --noinput
           deactivate
          '''
   }
@@ -33,7 +33,7 @@ node {
       try {
           sh '''
               source ../bin/activate
-              python <relative path to manage.py> jenkins
+              python manage.py jenkins
               deactivate
              '''
       }
