@@ -18,7 +18,7 @@ if __name__ == "__main__":
     else:
         settings = 'development'
 
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nomono.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_polymer_template.settings')
     os.environ.setdefault('DJANGO_CONFIGURATION', settings.title())
 
     from configurations.management import execute_from_command_line
